@@ -1,42 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
 
-  <object class="GtkWindow" id="window">
-    <property name="title">Grid</property>
+  <object class="GtkApplicationWindow" id="window">
+    <property name="title">Player</property>
+    <property name="default-width">1400</property>
+    <property name="default-height">900</property>
 
     <property name="child">
-      <object class="GtkGrid" id="grid">
+      <object class="GtkBox" id="root">
+        <property name="orientation">horizontal</property>
 
+
+        <!-- LEFT SIDEBAR -->
         <child>
-          <object class="GtkButton" id="button1">
-            <property name="label">Button 1</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">0</property>
-            </layout>
+          <object class="GtkBox" id="playlist_sidebar">
+            <property name="orientation">vertical</property>
+            <property name="spacing">10</property>
+            <property name="width-request">260</property>
+
+            <child>
+              <object class="GtkLabel" id="playlist_title">
+                <property name="label">Playlists</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkSearchEntry" id="playlist_search">
+                <property name="placeholder-text">Search playlists</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkButton" id="add_playlist">
+                <property name="label">+ New Playlist</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkSeparator"/>
+            </child>
+
+            <child>
+              <object class="GtkListBox" id="playlist_list">
+              </object>
+            </child>
+
           </object>
         </child>
 
+
+        <!-- CENTER -->
         <child>
-          <object class="GtkButton" id="button2">
-            <property name="label">Button 2</property>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">0</property>
-            </layout>
+          <object class="GtkBox" id="playlist_view">
+            <property name="orientation">vertical</property>
+            <property name="spacing">15</property>
+            <property name="hexpand">true</property>
+
+            <child>
+              <object class="GtkLabel" id="playlist_name">
+                <property name="label">Select Playlist</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+
+
+            <child>
+              <object class="GtkListView" id="song_list">
+                <property name="hexpand">true</property>
+                <property name="vexpand">true</property>
+              </object>
+            </child>
+
           </object>
         </child>
 
+
+
+        <!-- RIGHT SIDEBAR -->
         <child>
-          <object class="GtkButton" id="quit">
-            <property name="label">Quit</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">1</property>
-              <property name="column-span">2</property>
-            </layout>
+          <object class="GtkBox" id="song_info">
+            <property name="orientation">vertical</property>
+            <property name="spacing">15</property>
+            <property name="width-request">320</property>
+
+            <child>
+              <object class="GtkImage" id="album_cover">
+                <property name="pixel-size">300</property>
+              </object>
+            </child>
+
+
+            <child>
+              <object class="GtkLabel" id="song_title">
+                <property name="label">No song selected</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+
+
+            <child>
+              <object class="GtkLabel" id="artist">
+                <property name="label">Artist</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+
+
+            <child>
+              <object class="GtkLabel" id="metadata">
+                <property name="label">Album • Year • Genre</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+
           </object>
         </child>
+
 
       </object>
     </property>
